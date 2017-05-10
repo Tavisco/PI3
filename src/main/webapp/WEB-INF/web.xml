@@ -15,7 +15,7 @@
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>br.senac.si.pi3.rest</param-value>
+            <param-value>br.senac.si.pi3</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
