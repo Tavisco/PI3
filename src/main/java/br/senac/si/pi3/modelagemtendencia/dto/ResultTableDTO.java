@@ -11,16 +11,6 @@ public class ResultTableDTO {
     private Date data;
     private TendenciaEnum estadoNoPeriodo;
 
-    private final List<ResultTableDTO> resultList;
-
-    public List<ResultTableDTO> getResultList() {
-        return resultList;
-    }
-
-    public ResultTableDTO() {
-        this.resultList = new ArrayList<ResultTableDTO>();
-    }
-
     public String getCodigoAcao() {
         return codigoAcao;
     }
