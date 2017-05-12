@@ -115,6 +115,12 @@
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
         </dependency>
+        <!-- Dependencia da API do Yahoo Finance -->
+        <dependency>
+            <groupId>com.yahoofinance-api</groupId>
+            <artifactId>YahooFinanceAPI</artifactId>
+            <version>3.6.1</version>
+        </dependency>
     </dependencies>
 
     <build>
