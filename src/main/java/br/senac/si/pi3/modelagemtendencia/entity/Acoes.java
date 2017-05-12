@@ -1,5 +1,4 @@
-
-package br.senac.si.pi3.modelagemtendencia.modelo;
+package br.senac.si.pi3.modelagemtendencia.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,12 +17,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 @Entity
 @Table(name = "acoes")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Acoes.findAll", query = "SELECT a FROM Acoes a")
+    , @NamedQuery(name = "Acoes.findBetweenDates ", query = "SELECT a FROM Acoes a WHERE a.data BETWEEN :dataI AND :dataF")
+    //Ou essa query abaixo...
+//        , @NamedQuery(name = "Acoes.findBetweenDates ", query = "SELECT a FROM Acoes a WHERE a.data BETWEEN to_date(:dataI,'dd/mm/yyyy') AND to_date(:dataF,'dd/mm/yyyy')")
     , @NamedQuery(name = "Acoes.findById", query = "SELECT a FROM Acoes a WHERE a.id = :id")
     , @NamedQuery(name = "Acoes.findByCodigoAcao", query = "SELECT a FROM Acoes a WHERE a.codigoAcao = :codigoAcao")
     , @NamedQuery(name = "Acoes.findByData", query = "SELECT a FROM Acoes a WHERE a.data = :data")
@@ -31,10 +32,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Acoes.findByValorAlta", query = "SELECT a FROM Acoes a WHERE a.valorAlta = :valorAlta")
     , @NamedQuery(name = "Acoes.findByValorBaixa", query = "SELECT a FROM Acoes a WHERE a.valorBaixa = :valorBaixa")
     , @NamedQuery(name = "Acoes.findByValorFechamento", query = "SELECT a FROM Acoes a WHERE a.valorFechamento = :valorFechamento")
-    , @NamedQuery(name = "Acoes.findByVolume", query = "SELECT a FROM Acoes a WHERE a.volume = :volume")})
+    , @NamedQuery(name = "Acoes.findByVolume", query = "SELECT a FROM Acoes a WHERE a.volume = :volume")
+ 
+})
 public class Acoes implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)

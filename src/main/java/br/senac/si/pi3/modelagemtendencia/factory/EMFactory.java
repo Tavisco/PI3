@@ -1,5 +1,5 @@
 
-package br.senac.si.pi3.modelagemtendencia.persistencia;
+package br.senac.si.pi3.modelagemtendencia.factory;
 
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 @Singleton
-public class FabricaEM {
+public class EMFactory {
     private EntityManagerFactory emf;
 
     private EntityManager fabrica() {

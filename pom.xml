@@ -32,37 +32,32 @@
             <version>4.3.1.Final</version>
         </dependency>
         
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
             <type>jar</type>
         </dependency>-->
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
             <type>jar</type>
         </dependency>-->
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.7.0</version>
             <type>jar</type>
         </dependency>-->
         
-        <dependency>
+        <!--        <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
             <version>1.2</version>
             <type>jar</type>
-        </dependency>
+        </dependency>-->
         
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-        </dependency>
 
         <!--Dependencias Jersey--> 
         <dependency>
@@ -91,11 +86,30 @@
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>2.25</version>
         </dependency>
-<!--        <dependency>
+        <!-- Dependencia do CDI-->
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-api</artifactId>
+            <version>2.4.Final</version>
+        </dependency>
+        
+        <!--        <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.8.3</version>
         </dependency>-->
+        
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+        </dependency>
     </dependencies>
 
     <build>
