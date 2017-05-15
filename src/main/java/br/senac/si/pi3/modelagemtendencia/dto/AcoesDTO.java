@@ -1,11 +1,9 @@
 package br.senac.si.pi3.modelagemtendencia.dto;
 
 import br.senac.si.pi3.modelagemtendencia.Enum.TendenciaEnum;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class ResultTableDTO {
+public class AcoesDTO {
 
     private String codigoAcao;
     private Date data;

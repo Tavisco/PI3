@@ -1,11 +1,11 @@
 package br.senac.si.pi3.modelagemtendencia.service;
 
-import br.senac.si.pi3.modelagemtendencia.dto.ResultTableDTO;
-import java.util.Date;
+import br.senac.si.pi3.modelagemtendencia.dto.AcoesDTO;
+import java.text.ParseException;
 import java.util.List;
 
-public interface InterpolarService {
+public interface InterpolarService{
     
-    List<ResultTableDTO> verificarEstadoNoPeriodo(Date dataI, Date dataF);
+    List<AcoesDTO> verificarEstadoNoPeriodo(String dataI, String dataF)throws ParseException ;
     
 }
