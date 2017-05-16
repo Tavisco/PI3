@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Acoes.findBetweenDates ", query = "SELECT a FROM Acoes a WHERE a.data BETWEEN :dataI AND :dataF")
     //Ou essa query abaixo...
 //        , @NamedQuery(name = "Acoes.findBetweenDates ", query = "SELECT a FROM Acoes a WHERE a.data BETWEEN to_date(:dataI,'dd/mm/yyyy') AND to_date(:dataF,'dd/mm/yyyy')")
+    , @NamedQuery(name = "Acoes.findByNomeAcao", query = "SELECT a FROM Acoes a WHERE a.nomeAcao = :nomeAcao")
     , @NamedQuery(name = "Acoes.findById", query = "SELECT a FROM Acoes a WHERE a.id = :id")
     , @NamedQuery(name = "Acoes.findByCodigoAcao", query = "SELECT a FROM Acoes a WHERE a.codigoAcao = :codigoAcao")
     , @NamedQuery(name = "Acoes.findByData", query = "SELECT a FROM Acoes a WHERE a.data = :data")
@@ -50,6 +51,11 @@ public class Acoes implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "CodigoAcao")
     private String codigoAcao;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "NomeAcao")
+    private String nomeAcao;
     @Basic(optional = false)
     @NotNull
     @Column(name = "Data")
@@ -83,9 +89,10 @@ public class Acoes implements Serializable {
         this.id = id;
     }
 
-    public Acoes(Integer id, String codigoAcao, Date data, double valorAbertura, double valorAlta, double valorBaixa, double valorFechamento, double volume) {
+    public Acoes(Integer id, String codigoAcao, String nomeAcao, Date data, double valorAbertura, double valorAlta, double valorBaixa, double valorFechamento, double volume) {
         this.id = id;
         this.codigoAcao = codigoAcao;
+        this.nomeAcao = nomeAcao;
         this.data = data;
         this.valorAbertura = valorAbertura;
         this.valorAlta = valorAlta;
@@ -94,6 +101,16 @@ public class Acoes implements Serializable {
         this.volume = volume;
     }
 
+    
+
+    public String getNomeAcao() {
+        return nomeAcao;
+    }
+
+    public void setNomeAcao(String nomeAcao) {
+        this.nomeAcao = nomeAcao;
+    }
+    
     public Integer getId() {
         return id;
     }
