@@ -1,6 +1,5 @@
 
 /* global Mustache */
-
 function buscarTendencias() {
     var dataI = $('#dataI').val();
     var dataF = $('#dataF').val();
@@ -22,3 +21,7 @@ function insertMessege(mensagem, classe) {
     $("#mensagem").removeClass();
     $("#mensagem").html(mensagem).addClass(classe).css("display", "block");
 }
+
+$( function() {
+    $( ".datepicker" ).datepicker();
+  } );
