@@ -10,6 +10,9 @@ import br.senac.si.pi3.modelagemtendencia.dao.impl.AcoesDaoImpl;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import org.apache.commons.math3.analysis.interpolation.LinearInterpolator;
+import org.apache.commons.math3.analysis.polynomials.PolynomialFunction;
+import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 
 public class InterpolarServiceImpl implements InterpolarService {
 
@@ -17,19 +20,26 @@ public class InterpolarServiceImpl implements InterpolarService {
     private final AcoesDao dao;
     private final List<AcoesDTO> result;
     private final SimpleDateFormat sdf;
+    private LinearInterpolator interpolador;
 
     public InterpolarServiceImpl() {
         this.sdf = new SimpleDateFormat("yyyy/dd/MM");
         this.dao = new AcoesDaoImpl();
         this.result = new ArrayList<AcoesDTO>();
+        this.interpolador = new LinearInterpolator();
     }
 
     @Override
     public List<AcoesDTO> verificarEstadoNoPeriodo(String dataI, String dataF) throws ParseException {
         this.acoes = dao.selectRange(sdf.parse(dataI), sdf.parse(dataF));
-
-        //fazer contas e popular a lista com os DTO
         
+//        double[] x = {0.1, 0.6}, y = {1.221, 3.320};
+//        PolynomialSplineFunction re = interpolador.interpolate(x, y);
+//        PolynomialFunction[] resultado = re.getPolynomials();
+//        System.out.println(resultado[0].toString());
+        
+        //fazer contas e popular a lista com os DTO
+
         //Teste
         for (int i = 0; i < acoes.size(); i++) {
             AcoesDTO d = new AcoesDTO();

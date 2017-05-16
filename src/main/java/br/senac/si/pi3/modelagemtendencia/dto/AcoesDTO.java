@@ -32,6 +32,4 @@ public class AcoesDTO {
     public void setEstadoNoPeriodo(TendenciaEnum estadoNoPeriodo) {
         this.estadoNoPeriodo = estadoNoPeriodo;
     }
-    
-    
-}   
+}

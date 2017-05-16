@@ -22,4 +22,16 @@
                 <goal>jetty:run</goal>
             </goals>
         </action>
+        <action>
+            <actionName>run.single.deploy</actionName>
+            <packagings>
+                <packaging>war</packaging>
+            </packagings>
+            <goals>
+                <goal>package</goal>
+            </goals>
+            <properties>
+                <netbeans.deploy.clientUrlPart>${webpagePath}</netbeans.deploy.clientUrlPart>
+            </properties>
+        </action>
     </actions>
