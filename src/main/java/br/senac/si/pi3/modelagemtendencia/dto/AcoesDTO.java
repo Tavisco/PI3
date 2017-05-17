@@ -6,9 +6,18 @@ import java.util.Date;
 public class AcoesDTO {
 
     private String codigoAcao;
+    private String nomeAcao;
     private Date data;
     private TendenciaEnum estadoNoPeriodo;
 
+    public String getNomeAcao() {
+        return nomeAcao;
+    }
+
+    public void setNomeAcao(String nomeAcao) {
+        this.nomeAcao = nomeAcao;
+    }
+    
     public String getCodigoAcao() {
         return codigoAcao;
     }

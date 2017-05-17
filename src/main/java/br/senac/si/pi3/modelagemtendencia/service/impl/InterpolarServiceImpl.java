@@ -10,6 +10,7 @@ import br.senac.si.pi3.modelagemtendencia.dao.impl.AcoesDaoImpl;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import org.apache.commons.math3.analysis.interpolation.LinearInterpolator;
 import org.apache.commons.math3.analysis.polynomials.PolynomialFunction;
 import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
@@ -23,7 +24,7 @@ public class InterpolarServiceImpl implements InterpolarService {
     private LinearInterpolator interpolador;
 
     public InterpolarServiceImpl() {
-        this.sdf = new SimpleDateFormat("yyyy/dd/MM");
+        this.sdf = new SimpleDateFormat("yyyy/MM/dd");
         this.dao = new AcoesDaoImpl();
         this.result = new ArrayList<AcoesDTO>();
         this.interpolador = new LinearInterpolator();
@@ -31,7 +32,7 @@ public class InterpolarServiceImpl implements InterpolarService {
 
     @Override
     public List<AcoesDTO> verificarEstadoNoPeriodo(String dataI, String dataF) throws ParseException {
-        this.acoes = dao.selectRange(sdf.parse(dataI), sdf.parse(dataF));
+        this.acoes = dao.selectRange(convertDate(dataI), convertDate(dataF));
         
 //        double[] x = {0.1, 0.6}, y = {1.221, 3.320};
 //        PolynomialSplineFunction re = interpolador.interpolate(x, y);
@@ -43,6 +44,7 @@ public class InterpolarServiceImpl implements InterpolarService {
         //Teste
         for (int i = 0; i < acoes.size(); i++) {
             AcoesDTO d = new AcoesDTO();
+            d.setNomeAcao(acoes.get(i).getNomeAcao());
             d.setCodigoAcao(acoes.get(i).getCodigoAcao());
             d.setEstadoNoPeriodo(TendenciaEnum.ESTAGNADO);
             d.setData(acoes.get(i).getData());
@@ -50,5 +52,10 @@ public class InterpolarServiceImpl implements InterpolarService {
         }
         return this.result;
     }
-
+    private Date convertDate(String data) throws ParseException{
+        
+        Date dataC = sdf.parse(data.replace("-", "/"));
+        System.out.println("replace: " + data.replace("-", "/"));
+        return dataC;
+    }
 }
