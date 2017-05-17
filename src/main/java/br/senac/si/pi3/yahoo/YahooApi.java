@@ -57,9 +57,11 @@ public class YahooApi {
         acao.setVolume(stock.getQuote().getVolume());
         acao.setValorAbertura(stock.getQuote().getOpen().doubleValue());
         acao.setData(stock.getQuote().getLastTradeTime().getTime());
-        acao.setValorFechamento(/**Verificar se é previusClose mesmo*/stock.getQuote().getPreviousClose().doubleValue());
+        acao.setValorFechamento(stock.getQuote().getPrice().doubleValue());
         
         return acao;
     }
+    
+    
     
 }
