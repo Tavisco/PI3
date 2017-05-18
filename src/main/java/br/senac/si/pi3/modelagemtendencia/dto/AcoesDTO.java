@@ -4,12 +4,21 @@ import br.senac.si.pi3.modelagemtendencia.Enum.TendenciaEnum;
 import java.util.Date;
 
 public class AcoesDTO {
-
+    
+    private int id;
     private String codigoAcao;
     private String nomeAcao;
     private Date data;
     private TendenciaEnum estadoNoPeriodo;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNomeAcao() {
         return nomeAcao;
     }

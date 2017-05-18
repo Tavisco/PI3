@@ -12,7 +12,7 @@ public class EMFactory {
 
     private EntityManager fabrica() {
         if (emf == null) {
-            emf = Persistence.createEntityManagerFactory("pi3");
+            emf = Persistence.createEntityManagerFactory("pi3");//aqui é o nome da persistencia...
         }
 
         return emf.createEntityManager();

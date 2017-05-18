@@ -177,7 +177,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                     </div>
                     <br/><br/>
-                    <!--table-->
+                    <!--table template -->
+                    <script id="template" type="text/template">
+                        {{#.}}
+                        <tr role="row" class="odd">
+                        <td class="hidden-xs sorting_{{id}}">{{codigoAcao}}</td>
+                        <td>{{nomeAcao}}</td>
+                        <td>{{data}}</td>
+                        <td>{{estadoNoPeriodo}}</td>
+                        </tr>
+                        {{/.}}
+                    </script>
+                    <!--FIM table template -->
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10" >
                             <table style="background-color: white" id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -197,27 +208,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <th>Analise</th>
                                     </tr>
                                 </tfoot>
-                                <tbody id="teste">
-                                <script id="template" type="text/template">
+                                <tbody id="tblTendencias">
                                     <tr>
-                                        <td class="hidden-xs">{{ codigoAcao }}</td>
-                                        <td>{{ nomeAcao }}</td>
-                                        <td>{{ data }}</td>
-                                        <td>{{ estadoNoPeriodo }}</td>
+                                        <td class="hidden-xs">Sh43l</td>
+                                        <td>Shell</td>
+                                        <td>--</td>
+                                        <td>Crescente</td>
                                     </tr>
-                                </script>
-                                <!--                                <tr>
-                                                                    <td class="hidden-xs">Sh43l</td>
-                                                                    <td>Shell</td>
-                                                                    <td>--</td>
-                                                                    <td>Crescente</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="hidden-xs">Ptr4</td>
-                                                                    <td>Petrobras</td>
-                                                                    <td>17/04/2017</td>
-                                                                    <td>Troca Positiva</td>
-                                                                </tr>-->
                                 </tbody>
                             </table>
                         </div>
@@ -256,10 +253,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="../../resource/bootstrap/js/bootstrap.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../../resource/dist/js/app.min.js"></script>
-        <!--Meu Js-->
-        <script src="../../pages/modelagem-tendencia/tendenciaJs/tendencia_js.js"></script>
         <!-- Mustache -->
         <script src="../../plugins/mustache/mustache.js"></script>
+        <!--Meu Js-->
+        <script src="../../pages/modelagem-tendencia/tendenciaJs/tendencia_js.js"></script>
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
              Both of these plugins are recommended to enhance the
