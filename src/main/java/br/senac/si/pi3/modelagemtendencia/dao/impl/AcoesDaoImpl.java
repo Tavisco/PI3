@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 public class AcoesDaoImpl implements AcoesDao {
 
     private List<Acoes> dados;
-    //@Inject
     private final EntityManager em;
 
     public AcoesDaoImpl() {
