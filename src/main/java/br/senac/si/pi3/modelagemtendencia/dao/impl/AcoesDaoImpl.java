@@ -18,8 +18,14 @@ public class AcoesDaoImpl implements AcoesDao {
 
     @Override
     public List<Acoes> selectRange(Date dataI, Date dataF) {
-
         return em.createNamedQuery("Acoes.findBetweenDates ", Acoes.class)
+                .setParameter("dataI", dataI)
+                .setParameter("dataF", dataF)
+                .getResultList();
+    }
+
+    public List<Acoes> selectValueRange(Date dataI, Date dataF) {
+        return em.createNamedQuery("Acoes.findBetweenDatesTheValues", Acoes.class)
                 .setParameter("dataI", dataI)
                 .setParameter("dataF", dataF)
                 .getResultList();

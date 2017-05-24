@@ -22,9 +22,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Acoes.findAll", query = "SELECT a FROM Acoes a")
+    //query modulo de gaps
+    ,@NamedQuery(name = "Acoes.findBetweenDatesTheValues", query = "SELECT a.valorAbertura a.valorFechamento a.valorAlta a.valorBaixa "
+            + "FROM Acoes a WHERE a.data BETWEEN :dataI AND :dataF")
+    //query modulo de tendencia
     , @NamedQuery(name = "Acoes.findBetweenDates ", query = "SELECT a FROM Acoes a WHERE a.data BETWEEN :dataI AND :dataF")
     //Ou essa query abaixo...
-//        , @NamedQuery(name = "Acoes.findBetweenDates ", query = "SELECT a FROM Acoes a WHERE a.data BETWEEN to_date(:dataI,'dd/mm/yyyy') AND to_date(:dataF,'dd/mm/yyyy')")
+    //        , @NamedQuery(name = "Acoes.findBetweenDates ", query = "SELECT a FROM Acoes a WHERE a.data BETWEEN to_date(:dataI,'dd/mm/yyyy') AND to_date(:dataF,'dd/mm/yyyy')")
     , @NamedQuery(name = "Acoes.findByNomeAcao", query = "SELECT a FROM Acoes a WHERE a.nomeAcao = :nomeAcao")
     , @NamedQuery(name = "Acoes.findById", query = "SELECT a FROM Acoes a WHERE a.id = :id")
     , @NamedQuery(name = "Acoes.findByCodigoAcao", query = "SELECT a FROM Acoes a WHERE a.codigoAcao = :codigoAcao")
@@ -34,7 +38,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Acoes.findByValorBaixa", query = "SELECT a FROM Acoes a WHERE a.valorBaixa = :valorBaixa")
     , @NamedQuery(name = "Acoes.findByValorFechamento", query = "SELECT a FROM Acoes a WHERE a.valorFechamento = :valorFechamento")
     , @NamedQuery(name = "Acoes.findByVolume", query = "SELECT a FROM Acoes a WHERE a.volume = :volume")
- 
+
 })
 public class Acoes implements Serializable {
 
@@ -101,8 +105,6 @@ public class Acoes implements Serializable {
         this.volume = volume;
     }
 
-    
-
     public String getNomeAcao() {
         return nomeAcao;
     }
@@ -110,7 +112,7 @@ public class Acoes implements Serializable {
     public void setNomeAcao(String nomeAcao) {
         this.nomeAcao = nomeAcao;
     }
-    
+
     public Integer getId() {
         return id;
     }

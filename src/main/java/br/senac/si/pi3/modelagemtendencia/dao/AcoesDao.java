@@ -7,5 +7,5 @@ import java.util.List;
 public interface AcoesDao {
     
     List<Acoes> selectRange(Date dataI, Date dataF);
-    
+    List<Acoes> selectValueRange(Date dataI, Date dataF);
 }
