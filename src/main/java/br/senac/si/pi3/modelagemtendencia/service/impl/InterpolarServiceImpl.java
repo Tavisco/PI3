@@ -42,7 +42,6 @@ public class InterpolarServiceImpl implements InterpolarService {
         return this.result;
     }
     private Date convertDate(String data) throws ParseException{
-        Date dataC = sdf.parse(data.replace("-", "/"));
-        return dataC;
+        return sdf.parse(data.replace("-", "/"));
     }
 }

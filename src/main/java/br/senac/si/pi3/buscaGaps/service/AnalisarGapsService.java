@@ -6,6 +6,7 @@
 package br.senac.si.pi3.buscaGaps.service;
 
 import br.senac.si.pi3.buscaGaps.dto.GapsAcoesDTO;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -15,5 +16,5 @@ import java.util.List;
  */
 public interface AnalisarGapsService {
     
-    List<GapsAcoesDTO> AnalisaGaps(Date dataI, Date dataF);
+    List<GapsAcoesDTO> analisaGaps(String dataI, String dataF)throws ParseException;
 }

@@ -23,8 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Acoes.findAll", query = "SELECT a FROM Acoes a")
     //query modulo de gaps
-    ,@NamedQuery(name = "Acoes.findBetweenDatesTheValues", query = "SELECT a.valorAbertura a.valorFechamento a.valorAlta a.valorBaixa "
-            + "FROM Acoes a WHERE a.data BETWEEN :dataI AND :dataF")
+    ,@NamedQuery(name = "Acoes.findBetweenDatesTheValues", query = "SELECT a FROM Acoes AS a WHERE a.data BETWEEN :dataI AND :dataF")
     //query modulo de tendencia
     , @NamedQuery(name = "Acoes.findBetweenDates ", query = "SELECT a FROM Acoes a WHERE a.data BETWEEN :dataI AND :dataF")
     //Ou essa query abaixo...
