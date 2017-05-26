@@ -44,7 +44,7 @@
             <version>3.3.2</version>
             <type>jar</type>
         </dependency>-->
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
@@ -117,11 +117,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.42</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
+        <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
         <dependency>
             <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <version>10.10.1.1</version>
+            <artifactId>derbyclient</artifactId>
+            <version>10.13.1.1</version>
         </dependency>
 
         <dependency>
