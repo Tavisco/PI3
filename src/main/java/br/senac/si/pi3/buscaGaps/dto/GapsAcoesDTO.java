@@ -1,6 +1,7 @@
 package br.senac.si.pi3.buscaGaps.dto;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -9,8 +10,8 @@ import java.util.Date;
 public class GapsAcoesDTO {
     private String codigoAcao;
     private String nomeAcao;
-    private Date data;
-    private boolean gap;
+    private List<Date> datas;
+    private TipoGap gap;
 
     public String getCodigoAcao() {
         return codigoAcao;
@@ -28,19 +29,19 @@ public class GapsAcoesDTO {
         this.nomeAcao = nomeAcao;
     }
 
-    public Date getData() {
-        return data;
+    public List<Date> getDatas() {
+        return datas;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setData(List<Date> datas) {
+        this.datas = datas;
     }
 
-    public boolean isGap() {
+    public TipoGap getGap() {
         return gap;
     }
 
-    public void setGap(boolean gap) {
+    public void setGap(TipoGap gap) {
         this.gap = gap;
     }
 }

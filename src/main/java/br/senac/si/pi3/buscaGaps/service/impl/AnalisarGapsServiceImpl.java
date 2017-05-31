@@ -1,6 +1,7 @@
 package br.senac.si.pi3.buscaGaps.service.impl;
 
 import br.senac.si.pi3.buscaGaps.dto.GapsAcoesDTO;
+import br.senac.si.pi3.buscaGaps.dto.TipoGap;
 import br.senac.si.pi3.buscaGaps.service.AnalisarGapsService;
 import br.senac.si.pi3.modelagemtendencia.dao.AcoesDao;
 import br.senac.si.pi3.modelagemtendencia.dao.impl.AcoesDaoImpl;
@@ -15,8 +16,10 @@ import java.util.List;
  *
  * @author Gustavo
  */
-public class AnalisarGapsServiceImpl implements AnalisarGapsService{
-    
+public class AnalisarGapsServiceImpl implements AnalisarGapsService {
+
+    private List<Date> datas;
+    private GapsAcoesDTO d;
     private List<Acoes> acoes;
     private final AcoesDao dao;
     private final List<GapsAcoesDTO> result;
@@ -27,42 +30,48 @@ public class AnalisarGapsServiceImpl implements AnalisarGapsService{
         this.result = new ArrayList<GapsAcoesDTO>();
         this.sdf = new SimpleDateFormat("yyyy/MM/dd");
     }
-    
+
     public List<GapsAcoesDTO> analisaGaps(String dataI, String dataF) throws ParseException {
-        this.acoes = dao.selectValueRange(convertDate(dataI), convertDate(dataF));
-        //faz logica e popula result
+        this.acoes = this.dao.selectValueRange(convertDate(dataI), convertDate(dataF));
+        this.populaResult();
         
-        //depois agnt melhora isso que vou fazer aqui
-        int i = 0;
-        while(i < acoes.size()){
-            
-            if(acoes.get(i).getValorFechamento() > acoes.get(i+1).getValorAbertura()){
-                System.out.println("Gap de baixa");
-                
-            }
-            if(acoes.get(i).getValorFechamento() < acoes.get(i+1).getValorAbertura()){
-                System.out.println("Gap de alta");
-            }
-            i+=1;
-        }
-                
-        
-        //faze um teste aqui 
-        popula(acoes.get(0).getNomeAcao(),acoes.get(0).getCodigoAcao(),acoes.get(0).getData());
-        popula(acoes.get(1).getNomeAcao(),acoes.get(1).getCodigoAcao(),acoes.get(1).getData());
         return result;
     }
-    
-    private void popula(String nome, String cod, Date data){
-        GapsAcoesDTO d = new GapsAcoesDTO();
-        d.setCodigoAcao(cod);
-        d.setNomeAcao(nome);
-        d.setData(data);
-        d.setGap(true);
-        
-        result.add(d);
+
+    private void populaResult() {
+
+        for (int i = 0; i < this.acoes.size(); i++) {
+            this.d = new GapsAcoesDTO();
+            this.datas = new ArrayList();
+
+            this.d.setCodigoAcao(this.acoes.get(i).getCodigoAcao());
+            this.d.setNomeAcao(this.acoes.get(i).getNomeAcao());
+            this.datas.add(this.acoes.get(i).getData());
+            this.datas.add(this.acoes.get(i + i).getData());
+            this.d.setData(this.datas);
+            this.d.setGap(isGap(i));
+            this.result.add(this.d);
+        }
     }
-    private Date convertDate(String data) throws ParseException{
-        return sdf.parse(data.replace("-", "/"));
+
+    private TipoGap isGap(int i) {
+        if (this.acoes.get(i + 1) == null) {
+            return TipoGap.SEM_GAP;
+        } else {
+            if (this.acoes.get(i).getValorBaixa() > this.acoes.get(i + 1).getValorAlta()) {
+                System.out.println("Gap de baixa");
+                return TipoGap.BAIXA;
+            } else {
+                if (this.acoes.get(i).getValorAlta() < this.acoes.get(i + 1).getValorBaixa()) {
+                    System.out.println("Gap de alta");
+                    return TipoGap.ALTA;
+                }
+            }
+        }
+        return TipoGap.SEM_GAP;
+    }
+
+    private Date convertDate(String data) throws ParseException {
+        return this.sdf.parse(data.replace("-", "/"));
     }
 }

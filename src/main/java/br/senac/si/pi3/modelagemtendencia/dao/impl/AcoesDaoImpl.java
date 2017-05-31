@@ -25,7 +25,7 @@ public class AcoesDaoImpl implements AcoesDao {
     }
 
     public List<Acoes> selectValueRange(Date dataI, Date dataF) {
-        return em.createNamedQuery("Acoes.findBetweenDatesTheValues", Acoes.class)
+        return em.createNamedQuery("Acoes.findTheValuesBetweenDates", Acoes.class)
                 .setParameter("dataI", dataI)
                 .setParameter("dataF", dataF)
                 .getResultList();
