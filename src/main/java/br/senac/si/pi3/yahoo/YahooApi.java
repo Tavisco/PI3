@@ -12,7 +12,12 @@ package br.senac.si.pi3.yahoo;
  */
 import br.senac.si.pi3.modelagemtendencia.entity.Acoes;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.Consumes;
@@ -90,12 +95,30 @@ public class YahooApi {
     }
     
     @POST
-    @Path("testaPost")
+    @Path("absorver")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public String testaPost(@FormParam("sigla") String _nAcao, @FormParam("intervalo") String _periodo){
-        System.out.println("Sigla da acao: " + _nAcao);
-        System.out.println("Periodo da acao: " + _periodo);
+    public String absorver(@FormParam("sigla") String _nAcao, @FormParam("intervalo") String _periodo) throws IOException{
+        String[] datas = _periodo.split("-");
+        
+        datas[0] = datas[0].replace(" ", "");
+        datas[1] = datas[1].replace(" ", "");
+        
+        Calendar data1 = Calendar.getInstance();
+        Calendar data2 = Calendar.getInstance();
+        
+        SimpleDateFormat df = new SimpleDateFormat("mm/dd/yyyy");
+        try {
+            data1.setTime(df.parse(datas[0]));
+            data2.setTime(df.parse(datas[1]));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+            return "false";
+        }
+
+        Stock google = YahooFinance.get("GOOG", data1, data2, Interval.WEEKLY);
+        
+        
         return "true";
     }
 
