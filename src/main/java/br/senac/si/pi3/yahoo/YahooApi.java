@@ -108,15 +108,22 @@ public class YahooApi {
         Calendar data2 = Calendar.getInstance();
         
         SimpleDateFormat df = new SimpleDateFormat("mm/dd/yyyy");
+        Stock stock;
+        
         try {
             data1.setTime(df.parse(datas[0]));
             data2.setTime(df.parse(datas[1]));
+            stock = YahooFinance.get(_nAcao, data1, data2, Interval.DAILY);
         } catch (ParseException ex) {
             ex.printStackTrace();
             return "false";
         }
 
-        Stock google = YahooFinance.get("GOOG", data1, data2, Interval.WEEKLY);
+
+        if (!stock.isValid()) {
+            return "false";
+        }
+        
         
         
         return "true";
