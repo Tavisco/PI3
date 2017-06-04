@@ -115,16 +115,12 @@ public class YahooApi {
             data2.setTime(df.parse(datas[1]));
             stock = YahooFinance.get(_nAcao, data1, data2, Interval.DAILY);
         } catch (ParseException ex) {
-            ex.printStackTrace();
             return "false";
         }
-
 
         if (!stock.isValid()) {
             return "false";
         }
-        
-        
         
         return "true";
     }
