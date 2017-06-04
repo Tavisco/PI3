@@ -14,9 +14,11 @@ import br.senac.si.pi3.modelagemtendencia.entity.Acoes;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +32,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
+import yahoofinance.histquotes.HistoricalQuote;
 import yahoofinance.histquotes.Interval;
 
 @Path("yahoo")
@@ -72,26 +75,27 @@ public class YahooApi {
 
         return null;
     }
-
-
-    public void testaHistorico() throws IOException {
-        /**
-         * Calendar from = Calendar.getInstance(); Calendar to =
-         * Calendar.getInstance(); from.add(Calendar.YEAR, -1); // from 1 year
-         * ago
-         *
-         * Stock google = YahooFinance.get("GOOG"); List<HistoricalQuote>
-         * googleHistQuotes = google.getHistory(from, to, Interval.DAILY);
-         */
-
-        Calendar from = Calendar.getInstance();
-        Calendar to = Calendar.getInstance();
-        from.add(Calendar.YEAR, -5); // from 5 years ago
-
-        Stock google = YahooFinance.get("GOOG", from, to, Interval.WEEKLY);
+    
+    private List<Acoes> converteParaAcao(List<HistoricalQuote> historico, String nome){
+        List<Acoes> lst = new ArrayList<Acoes>();
         
-        String sla = "oi";
-
+        for(HistoricalQuote hq : historico){
+            Acoes acao = new Acoes();
+            
+            acao.setNomeAcao(nome);
+            acao.setCodigoAcao(hq.getSymbol());
+            acao.setValorAlta(hq.getHigh().doubleValue());
+            acao.setValorBaixa(hq.getLow().doubleValue());
+            acao.setVolume(hq.getVolume());
+            acao.setValorAbertura(hq.getOpen().doubleValue());
+            acao.setData(hq.getDate().getTime());
+            acao.setValorFechamento(hq.getClose().doubleValue());
+            
+            lst.add(acao);
+        }
+        
+        return lst;
+    
     }
     
     @POST
@@ -114,13 +118,17 @@ public class YahooApi {
             data1.setTime(df.parse(datas[0]));
             data2.setTime(df.parse(datas[1]));
             stock = YahooFinance.get(_nAcao, data1, data2, Interval.DAILY);
-        } catch (ParseException ex) {
+        } catch (Exception e) {
             return "false";
         }
-
+        
         if (!stock.isValid()) {
             return "false";
         }
+        
+        List<Acoes> acoes = new ArrayList<Acoes>();
+        
+        acoes = converteParaAcao(stock.getHistory(), stock.getName());
         
         return "true";
     }

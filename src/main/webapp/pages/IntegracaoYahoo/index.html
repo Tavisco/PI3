@@ -175,7 +175,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <button type="submit" class="btn btn-success pull-right">Absorver</button>
+                                    <button type="submit" id="btnSubmeter" class="btn btn-success pull-right">Absorver</button>
                                 </div>
                                 <!-- /.box-footer -->
                             </form>
@@ -226,19 +226,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
             $("#formAbsorver").submit(function (event) {
                 event.preventDefault();
 
+                $('#btnSubmeter').html("<i class='fa fa-circle-o-notch fa-spin fa-fw'></i>");
+
                 $.ajax({
-                    type: "POST",
-                    data: $("#formAbsorver").serialize(),
+                    method: "POST",
                     url: "/api/yahoo/absorver",
-                    success: function (data)
-                    {
-                        if(data === "true"){
-                            alert("Dados incluídos com sucesso!");
-                        } else {
-                            alert("Erro ao incluir dados");
-                        }
-                    }
-                });
+                    data: $("#formAbsorver").serialize()
+                })
+                        .done(function (msg) {
+                            if (msg === "true") {
+                                alert("Dados incluídos com sucesso!");
+                            } else {
+                                alert("Erro ao incluir dados");
+                            }
+                            $('#btnSubmeter').html("Absorver");
+                        })
+                        .fail(function (jqXHR, textStatus) {
+                            alert("Erro ao incluir dados: " + textStatus);
+                            $('#btnSubmeter').html("Absorver");
+                        });
             });
         </script>
     </body>
