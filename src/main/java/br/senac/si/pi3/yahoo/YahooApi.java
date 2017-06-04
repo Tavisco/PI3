@@ -11,6 +11,7 @@ package br.senac.si.pi3.yahoo;
  * https://github.com/sstrickx/yahoofinance-api
  */
 import br.senac.si.pi3.modelagemtendencia.entity.Acoes;
+import br.senac.si.pi3.modelagemtendencia.factory.EMFactory;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -37,6 +39,12 @@ import yahoofinance.histquotes.Interval;
 
 @Path("yahoo")
 public class YahooApi {
+
+    private final EntityManager em;
+
+    public YahooApi() {
+        this.em = new EMFactory().getEntityManager();
+    }
 
     @GET
     @Path("testar/{nomeAcao}")
@@ -75,13 +83,13 @@ public class YahooApi {
 
         return null;
     }
-    
-    private List<Acoes> converteParaAcao(List<HistoricalQuote> historico, String nome){
+
+    private List<Acoes> converteParaAcao(List<HistoricalQuote> historico, String nome) {
         List<Acoes> lst = new ArrayList<Acoes>();
-        
-        for(HistoricalQuote hq : historico){
+
+        for (HistoricalQuote hq : historico) {
             Acoes acao = new Acoes();
-            
+
             acao.setNomeAcao(nome);
             acao.setCodigoAcao(hq.getSymbol());
             acao.setValorAlta(hq.getHigh().doubleValue());
@@ -90,30 +98,30 @@ public class YahooApi {
             acao.setValorAbertura(hq.getOpen().doubleValue());
             acao.setData(hq.getDate().getTime());
             acao.setValorFechamento(hq.getClose().doubleValue());
-            
+
             lst.add(acao);
         }
-        
+
         return lst;
-    
+
     }
-    
+
     @POST
     @Path("absorver")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public String absorver(@FormParam("sigla") String _nAcao, @FormParam("intervalo") String _periodo) throws IOException{
+    public String absorver(@FormParam("sigla") String _nAcao, @FormParam("intervalo") String _periodo) throws IOException {
         String[] datas = _periodo.split("-");
-        
+
         datas[0] = datas[0].replace(" ", "");
         datas[1] = datas[1].replace(" ", "");
-        
+
         Calendar data1 = Calendar.getInstance();
         Calendar data2 = Calendar.getInstance();
-        
+
         SimpleDateFormat df = new SimpleDateFormat("mm/dd/yyyy");
         Stock stock;
-        
+
         try {
             data1.setTime(df.parse(datas[0]));
             data2.setTime(df.parse(datas[1]));
@@ -121,15 +129,25 @@ public class YahooApi {
         } catch (Exception e) {
             return "false";
         }
-        
+
         if (!stock.isValid()) {
             return "false";
         }
-        
+
         List<Acoes> acoes = new ArrayList<Acoes>();
-        
+
         acoes = converteParaAcao(stock.getHistory(), stock.getName());
-        
+
+        try {
+            for (Acoes acaoBD : acoes) {
+                em.getTransaction().begin();
+                em.persist(acaoBD);
+                em.getTransaction().commit();
+            }
+        } catch (Exception e) {
+            return "false";
+        }
+
         return "true";
     }
 
