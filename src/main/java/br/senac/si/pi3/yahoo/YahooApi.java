@@ -116,16 +116,16 @@ public class YahooApi {
         datas[0] = datas[0].replace(" ", "");
         datas[1] = datas[1].replace(" ", "");
 
-        Calendar data1 = Calendar.getInstance();
-        Calendar data2 = Calendar.getInstance();
+        Calendar dataDe = Calendar.getInstance();
+        Calendar dataAte = Calendar.getInstance();
 
-        SimpleDateFormat df = new SimpleDateFormat("mm/dd/yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         Stock stock;
 
         try {
-            data1.setTime(df.parse(datas[0]));
-            data2.setTime(df.parse(datas[1]));
-            stock = YahooFinance.get(_nAcao, data1, data2, Interval.DAILY);
+            dataDe.setTime(df.parse(datas[0]));
+            dataAte.setTime(df.parse(datas[1]));
+            stock = YahooFinance.get(_nAcao, dataDe, dataAte, Interval.DAILY);
         } catch (Exception e) {
             return "false";
         }
