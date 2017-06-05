@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function incluirCadastro(data){
-    
+function incluirCadastro(data){    
     //refazer o código abaixo usando template mustache.
     //o código deverá ficar mais simples e limpo usando o template
     var newRow = '<tr><td>'+ data.RestResponse.result.ip + '</td>'+
