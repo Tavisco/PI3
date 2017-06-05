@@ -23,6 +23,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               apply the skin class to the body tag so the changes take effect.
         -->
         <link rel="stylesheet" href="/resource/dist/css/skins/skin-green.min.css">
+        
+        <!-- daterange picker -->
+        <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -112,6 +115,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <li><a href="#">TIPO B</a></li>
                             </ul>
                         </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span>Configurações</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/pages/IntegracaoYahoo/index.html"><i class="fa fa-plus-circle" aria-hidden="true"></i> Adicionar ação</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
@@ -123,7 +136,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="text-align: center">
                     <h1>
-                        Busca de GAP'S
+                        Busca de GAPS
                     </h1>
                 </section>
 
@@ -131,7 +144,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <section class="content">
 
                     <!-- Your Page Content Here -->
+                    <div class="col-md-12" style="text-align: center">
+                        <h3>Verifique, utilizando o formulário abaixo, se houve gaps em um determinado período de tempo</h3>
+                    </div>
 
+                    <div class="col-md-6 col-sm-12">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Verificar se houve gaps no histórico</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <form id="formAbsorver" class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="sigla" class="col-sm-2 control-label">Sigla da ação</label>
+
+                                        <div class="col-sm-10">
+                                            <input class="form-control" name="sigla" placeholder="PETR4.SA">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="intervalo">Intervalo:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control pull-right" id="intervalo" name="intervalo">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <button type="submit" id="btnSubmeter" class="btn btn-success pull-right">Verificar</button>
+                                </div>
+                                <!-- /.box-footer -->
+                            </form>
+                        </div>
+                    </div>
                 </section>
                 <!-- /.content -->
             </div>
@@ -163,9 +214,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- AdminLTE App -->
         <script src="/resource/dist/js/app.min.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+        <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
              Both of these plugins are recommended to enhance the
              user experience. Slimscroll is required when using the
              fixed layout. -->
+
     </body>
 </html>
