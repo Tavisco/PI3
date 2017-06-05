@@ -1,13 +1,11 @@
 package br.senac.si.pi3.modelagemtendencia.webservice.impl;
 
 import br.senac.si.pi3.modelagemtendencia.dto.AcoesDTO;
-import br.senac.si.pi3.modelagemtendencia.factory.EMFactory;
 import br.senac.si.pi3.modelagemtendencia.service.InterpolarService;
 import br.senac.si.pi3.modelagemtendencia.service.impl.InterpolarServiceImpl;
 import br.senac.si.pi3.modelagemtendencia.webservice.TendenciaWebService;
 import java.text.ParseException;
 import java.util.List;
-import javax.persistence.EntityManager;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
