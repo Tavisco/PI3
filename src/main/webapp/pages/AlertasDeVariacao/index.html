@@ -23,6 +23,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
               apply the skin class to the body tag so the changes take effect.
         -->
         <link rel="stylesheet" href="/resource/dist/css/skins/skin-green.min.css">
+        <link rel="stylesheet" href="alertadevariacao.css" type="text/css"/>
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -123,7 +125,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Monitoramento de ações
+                        Alerta de Variação
                     </h1>
                 </section>
 
@@ -131,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <section class="content">
 
                     <!--mais em http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-forms.php-->
-                    <div class="container">
+                    <div class="container responsive">
                         <div class="row">
                             <div class="col-xs-12">&nbsp;</div>
                         </div>
@@ -139,7 +141,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col-xs-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Alertas</div>
-                                    <div class="panel-body">
+                                    <div class="panel-body"> 
                                         <form class="myCustomForm">
                                             <div class="row">
 
@@ -147,6 +149,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <label for="txtIP">Ativo</label>
                                                     <div class="input-group">
                                                         <input type="text" class="form-control" id="txtIP" placeholder="Digite o nome do Ativo"/>
+                                                        
+                                                        <label for="txtIP">E-mail</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control"  placeholder="Digite o e-mail"/>
 
                                                         <label for="txtIP">Cotação atual</label>
                                                         <div class="input-group">
@@ -175,21 +181,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <div class="row">
                                                             <div class="col-xs-12">&nbsp;</div>
                                                         </div>    
-                                                        <div class="row">
-                                                            <!-- tables no bootstrap http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-tables.php -->
-                                                            <!--exercício : criar uma tabela específica para tamanhos pequenos
-                                                                http://getbootstrap.com/css/#responsive-utilities
-                                                            -->
-                                                            <div class="col-xs-12">
+                                                        <div class="row">                                                         
+                                                            <div class="col-xms-12">
                                                                 <div class='table-responsive'>
                                                                     <table class="table table-striped table-condensed">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th>Ativo</th>
+                                                                                <th >Ativo</th>
                                                                                 <th >Cotação atual</th>
-                                                                                <th>Valor máximo</th>
-                                                                                <th>Valor mínimo</th>
-                                                                                <th> Configurações</th>
+                                                                                <th >Valor máximo</th>
+                                                                                <th >Valor mínimo</th>
+                                                                                <th > Configurações</th>
 
                                                                             </tr>
                                                                         </thead>
@@ -215,7 +217,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        </form>
+                                            </form>
 
                                                     </div>
 
@@ -245,20 +247,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                  immediately after the control sidebar -->
                             <div class="control-sidebar-bg"></div>
                         </div>
-                        <!-- ./wrapper -->
+                    </div>
+                    </div>
+                    <!-- ./wrapper -->
 
-                        <!-- REQUIRED JS SCRIPTS -->
+                    <!-- REQUIRED JS SCRIPTS -->
 
-                        <!-- jQuery 2.2.3 -->
-                        <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
-                        <!-- Bootstrap 3.3.6 -->
-                        <script src="/resource/bootstrap/js/bootstrap.min.js"></script>
-                        <!-- AdminLTE App -->
-                        <script src="/resource/dist/js/app.min.js"></script>
+                    <!-- jQuery 2.2.3 -->
+                    <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+                    <!-- Bootstrap 3.3.6 -->
+                    <script src="/resource/bootstrap/js/bootstrap.min.js"></script>
+                    <!-- AdminLTE App -->
+                    <script src="/resource/dist/js/app.min.js"></script>
 
-                        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-                             Both of these plugins are recommended to enhance the
-                             user experience. Slimscroll is required when using the
-                             fixed layout. -->
-                        </body>
-                        </html>
+                    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+                         Both of these plugins are recommended to enhance the
+                         user experience. Slimscroll is required when using the
+                         fixed layout. -->
+                    </body>
+                    </html>
