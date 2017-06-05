@@ -14,6 +14,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.min.css">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!--DataTable boot-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
@@ -112,6 +115,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <li><a href="#">TIPO B</a></li>
                             </ul>
                         </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> <span>Configurações</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="/pages/IntegracaoYahoo/index.html"><i class="fa fa-plus-circle" aria-hidden="true"></i> Adicionar ação</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
@@ -121,16 +134,51 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
-                <section class="content-header" style="text-align: center">
-                    <h1>
-                        Busca de GAP'S
-                    </h1>
+                <section class="content-header">
+                    <div class="col-md-12" style="text-align: center">
+                        <h1>
+                            Busca de GAPS
+                        </h1>
+                    </div>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
 
                     <!-- Your Page Content Here -->
+                    <div class="col-md-12" style="text-align: center">
+                        <h3>Verifique, utilizando o formulário abaixo, se houve gaps em um determinado período de tempo</h3>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-4 col-sm-4 col-xs-6">
+                                <p style="text-align: center">Data inicial</p>
+                                <div class="input-group" >              
+                                    <input type="text" class="form-control datepicker" id="dataIicial" >
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-6">
+                                <p style="text-align: center">Data final</p>
+                                <div class="input-group" >
+                                    <input type="text" class="form-control datepicker" id="dataFinal">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-6">
+                            <button class="btn btn-block btn-lg btn-instagram" onclick="encontrarGaps()">Verificar</button>
+                        </div>
+                    </div>
+                    <br/><br/>
 
                 </section>
                 <!-- /.content -->
@@ -163,9 +211,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- AdminLTE App -->
         <script src="/resource/dist/js/app.min.js"></script>
 
+        <!--Js dataTable-->
+        <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+        <!-- Mustache -->
+        <script src="../../plugins/mustache/mustache.js"></script>
+
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
              Both of these plugins are recommended to enhance the
              user experience. Slimscroll is required when using the
              fixed layout. -->
+
     </body>
 </html>
