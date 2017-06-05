@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Gustavo
- */
 public class AnalisarGapsServiceImpl implements AnalisarGapsService {
 
     private List<Date> datas;
@@ -33,21 +29,21 @@ public class AnalisarGapsServiceImpl implements AnalisarGapsService {
 
     public List<GapsAcoesDTO> analisaGaps(String dataI, String dataF) throws ParseException {
         this.acoes = this.dao.selectValueRange(convertDate(dataI), convertDate(dataF));
-        this.populaResult();
+        this.adicionaDadosResult();
         
         return result;
     }
 
-    private void populaResult() {
+    private void adicionaDadosResult() {
 
-        for (int i = 0; i < this.acoes.size(); i++) {
+        for (int i = 0; i < (this.acoes.size()-1); i++) {
             this.d = new GapsAcoesDTO();
             this.datas = new ArrayList();
-
+            
             this.d.setCodigoAcao(this.acoes.get(i).getCodigoAcao());
             this.d.setNomeAcao(this.acoes.get(i).getNomeAcao());
             this.datas.add(this.acoes.get(i).getData());
-            this.datas.add(this.acoes.get(i + i).getData());
+            this.datas.add(this.acoes.get(i + 1).getData());
             this.d.setData(this.datas);
             this.d.setGap(isGap(i));
             this.result.add(this.d);
@@ -59,15 +55,16 @@ public class AnalisarGapsServiceImpl implements AnalisarGapsService {
             return TipoGap.SEM_GAP;
         } else {
             if (this.acoes.get(i).getValorBaixa() > this.acoes.get(i + 1).getValorAlta()) {
-                System.out.println("Gap de baixa");
+                System.out.println("Houve um gap de baixa");
                 return TipoGap.BAIXA;
             } else {
                 if (this.acoes.get(i).getValorAlta() < this.acoes.get(i + 1).getValorBaixa()) {
-                    System.out.println("Gap de alta");
+                    System.out.println("Houve um gap de alta");
                     return TipoGap.ALTA;
                 }
             }
         }
+        System.out.println("Não houve gaps");
         return TipoGap.SEM_GAP;
     }
 

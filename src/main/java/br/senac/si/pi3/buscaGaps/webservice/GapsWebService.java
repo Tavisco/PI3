@@ -13,11 +13,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
-/**
- * REST Web Service
- *
- * @author Gustavo
- */
 @Path("gaps")
 @RequestScoped
 public class GapsWebService {
@@ -29,11 +24,11 @@ public class GapsWebService {
     }
     
     @GET
+    @Path("{dataInicial}/{dataFinal}/json")
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{dataI}/{dataF}/json")
-    public List<GapsAcoesDTO> getJson(@PathParam("dataI") String dataI, @PathParam("dataF") String dataF){
+    public List<GapsAcoesDTO> getJson(@PathParam("dataInicial") String dataInicial, @PathParam("dataFinal") String dataFinal){
         try {
-            return this.servico.analisaGaps(dataI, dataF);
+            return this.servico.analisaGaps(dataInicial, dataFinal);
         } catch (ParseException e) {
             System.out.println("PARSE EX");
             throw new WebApplicationException(500);
