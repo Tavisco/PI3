@@ -20,6 +20,9 @@
         -->
         <link rel="stylesheet" href="/resource/dist/css/skins/skin-green.min.css">
 
+        <!-- daterange picker -->
+        <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -117,7 +120,7 @@
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
-                <section class="content-header" style="text-align: center">
+                <section class="content-header">
                     <h1>
                         Monitoramento de volume 
                     </h1>
@@ -125,27 +128,27 @@
 
                 <!-- Main content -->
                 <section class="content">
-
-                    <div class="row">
-                        <div class="col-xs-12"></div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading"><h4>Intervalo de tempo</h4></div>
-                            <div>
-                                <div class="input-group">
-                                    <div class="input-group-addon">   
-                                        <i class="fa fa-calendar">
-
-                                        </i>
-                                    </div>
-                                    <input type="text" class="form-control pull-right" id="escolheData">
-                                </div>
+                    <div class="col-xs-12">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Variação de ações</h3>
                             </div>
-                            
+                            <form id="formEnviar" class="form-horizontal">
+                                <div class="box-body">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">   
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" id="data" name="data">
+                                    </div>
+
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" id="btnSubmeter" class="btn btn-success pull-right">enviar</button>    
+                                </div>
+                            </form>
                         </div>
                     </div>
-
-
-
 
                 </section>
                 <!-- /.content -->
@@ -178,14 +181,34 @@
         <!-- AdminLTE App -->
         <script src="/resource/dist/js/app.min.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+        <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+
         <script>
-            $('#escolheData').daterangepicker();
-            
+            $('#data').daterangepicker();
+
+            $("#formEnviar").submit(function (event) {
+                event.preventDefault();
+         
+                $.ajax({
+                    method: "POST",
+                    url: "/api/alertaVolume/enviar",
+                    data: $("#formEnviar").serialize()
+                })
+                 .done(function (msg) {      
+                if (msg === "true"){
+                    console.log("Dados enviados com sucesso!");
+                } else {
+                    alert("Erro ao incluir dados");
+                }
+                $('#btnSubmeter').html("enviar");  
+
+            })
+    
+   });
         </script>
 
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-             Both of these plugins are recommended to enhance the
-             user experience. Slimscroll is required when using the
-             fixed layout. -->
+
+
     </body>
 </html>
