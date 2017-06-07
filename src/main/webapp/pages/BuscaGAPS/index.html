@@ -19,6 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="/resource/dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -150,6 +151,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <h3>Verifique, utilizando o formulário abaixo, se houve gaps em um determinado período de tempo</h3>
                     </div>
 
+
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-4 col-sm-4 col-xs-6">
@@ -171,7 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>    
                     <br/><br/>
                     <div class="row">
                         <div class="col-md-offset-3 col-md-6">
@@ -179,6 +181,62 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                     </div>
                     <br/><br/>
+                    <div class="col-md-12" style="background-color: white;">
+                        <script id="template" type="text/template">
+                                <table id="example" style="background-color: white" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                           <th>Código</th>
+                                    <th>Nome</th>
+                                    <th>Data</th>
+                                    <th>GAP</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Código</th>
+                                        <th>Nome</th>
+                                        <th>Data</th>
+                                        <th>GAP</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {{#.}}
+                                            <tr role="row" class="odd">
+                                                <td>{{codigoAcao}}</td>
+                                                <td>{{nomeAcao}}</td>
+                                                <td>{{datas}}</td>
+                                                <td>{{gap}}</td>
+                                            </tr>
+                                        {{/.}}
+                                    </tbody>
+                                </table>
+                        </script>
+                        <div class="col-md-12" id="tabela">
+                            <table id="inicio" class="table table-responsive table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Nome</th>
+                                        <th>Data</th>
+                                        <th>GAP</th>
+
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Nome</th>
+                                        <th>Data</th>
+                                        <th>GAP</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+
+                        </div>
 
                 </section>
                 <!-- /.content -->
@@ -205,22 +263,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- REQUIRED JS SCRIPTS -->
 
         <!-- jQuery 2.2.3 -->
-        <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- Bootstrap 3.3.6 -->
-        <script src="/resource/bootstrap/js/bootstrap.min.js"></script>
         <!-- AdminLTE App -->
-        <script src="/resource/dist/js/app.min.js"></script>
 
+        <!-- jQuery 2.2.3 -->
+        <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!--Js dataTable-->
         <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-
+        <!-- Bootstrap 3.3.6 -->
+        <script src="../../resource/bootstrap/js/bootstrap.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../../resource/dist/js/app.min.js"></script>
         <!-- Mustache -->
-        <script src="/plugins/mustache/mustache.js"></script>
-
-        <!-- Meu javascript -->
+        <script src="../../plugins/mustache/mustache.js"></script>
+        <!--Meu Js-->
         <script src="/pages/BuscaGAPS/gaps_javascript/gaps.js"></script>
 
+        <!-- Optionally, you can add Slimscroll and FastClick plugins.
+             Both of these plugins are recommended to enhance the
+             user experience. Slimscroll is required when using the
+             fixed layout. -->
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
              Both of these plugins are recommended to enhance the
              user experience. Slimscroll is required when using the

@@ -10,10 +10,6 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Gustavo
- */
 public interface AnalisarGapsService {
     
     List<GapsAcoesDTO> analisaGaps(String dataI, String dataF)throws ParseException;
