@@ -10,19 +10,17 @@ package br.senac.si.pi3.yahoo;
  * @author otavio.mpinheiro Link da API:
  * https://github.com/sstrickx/yahoofinance-api
  */
+import br.senac.si.pi3.modelagemtendencia.dao.AcoesDao;
+import br.senac.si.pi3.modelagemtendencia.dao.impl.AcoesDaoImpl;
 import br.senac.si.pi3.modelagemtendencia.entity.Acoes;
 import br.senac.si.pi3.modelagemtendencia.factory.EMFactory;
+
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.persistence.EntityManager;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -32,6 +30,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.HistoricalQuote;
@@ -45,43 +44,28 @@ public class YahooApi {
     public YahooApi() {
         this.em = new EMFactory().getEntityManager();
     }
+    
+
 
     @GET
-    @Path("testar/{nomeAcao}")
+    @Path("getAcoes")
     @Produces(MediaType.APPLICATION_JSON)
-    public Acoes testa(@PathParam("nomeAcao") String _nAcao) throws IOException {
+    public Table getAcoes(@PathParam("nomeAcao") String _nAcao) throws IOException {
         System.out.println("=-=-=-=-=-=-=-= Teste Yahoo Finance =-=-=-=-=-=-=-= ");
         System.out.println("YH>>> Iniciando teste");
 
-        return getAcao(_nAcao);
-    }
+        Table tbl = new Table();
+        
+        List<Acoes> lst = em.createNamedQuery("Acoes.findAll", Acoes.class)
+                .getResultList();
+        
+        tbl.data = new Acoes[lst.size()];
+        
+        tbl.data = lst.toArray(tbl.data);
 
-    private Acoes getAcao(String _nAcao) {
-        try {
-            Stock stock = YahooFinance.get(_nAcao);
-            Acoes acao = new Acoes();
+        System.out.println("YH>>> FIM teste");
 
-            if (stock.isValid()) {
-                acao.setNomeAcao(stock.getName());
-                acao.setCodigoAcao(stock.getSymbol());
-                acao.setValorAlta(stock.getQuote().getDayHigh().doubleValue());
-                acao.setValorBaixa(stock.getQuote().getDayLow().doubleValue());
-                acao.setVolume(stock.getQuote().getVolume());
-                acao.setValorAbertura(stock.getQuote().getOpen().doubleValue());
-                acao.setData(stock.getQuote().getLastTradeTime().getTime());
-                acao.setValorFechamento(stock.getQuote().getPrice().doubleValue());
-            } else {
-                System.out.println("YH>>> Acao nao encontrada!");
-                return null;
-            }
-
-            return acao;
-
-        } catch (IOException ex) {
-            Logger.getLogger(YahooApi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return null;
+        return tbl;
     }
 
     private List<Acoes> converteParaAcao(List<HistoricalQuote> historico, String nome) {

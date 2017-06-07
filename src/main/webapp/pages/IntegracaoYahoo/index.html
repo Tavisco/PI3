@@ -146,7 +146,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Your Page Content Here -->
 
 
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <div class="box box-success">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Absorver ação</h3>
@@ -156,7 +156,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <form id="formAbsorver" class="form-horizontal">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="sigla" class="col-sm-2 control-label">Sigla da ação</label>
+                                        <label for="sigla" class="col-sm-2 control-label">Sigla</label>
 
                                         <div class="col-sm-10">
                                             <input class="form-control" name="sigla" placeholder="PETR4.SA">
@@ -179,6 +179,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <!-- /.box-footer -->
                             </form>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-8 col-sm-12">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Ações absorvidas</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                               <table id="tblAcoes" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Nome</th>
+                                            <th>Data</th>
+                                            <th>V. Abertura</th>
+                                            <th>V. Alta</th>
+                                            <th>V. Baixa</th>
+                                            <th>V. Fechamento</th>
+                                            <th>Volume</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Nome</th>
+                                            <th>Data</th>
+                                            <th>V. Abertura</th>
+                                            <th>V. Alta</th>
+                                            <th>V. Baixa</th>
+                                            <th>V. Fechamento</th>
+                                            <th>Volume</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -219,6 +257,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
         <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+        
+        <!-- DataTables -->
+        <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
         <script>
             $('#intervalo').daterangepicker();
@@ -246,6 +288,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $('#btnSubmeter').html("Absorver");
                         });
             });
+            
+            $(document).ready(function() {
+                $('#tblAcoes').DataTable({
+                    "ajax": '/api/yahoo/getAcoes',
+                    "columns": [
+                        { "data" : "codigoAcao" },
+                        { "data": "nomeAcao" },
+                        { "data": "data" },
+                        { "data": "valorAbertura" },
+                        { "data": "valorAlta" },
+                        { "data": "valorBaixa" },
+                        { "data" : "valorFechamento"},
+                        { "data" : "volume"}
+                    ]
+                });
+            } );
         </script>
     </body>
 </html>
