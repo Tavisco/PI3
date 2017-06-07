@@ -144,124 +144,152 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <form class="myCustomForm">
                                             <div class="row">
 
-                                                <div class="col-md-3 input-group">
-                                                    <label for="txtIP">Ativo</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="txtIP" placeholder="Digite o nome do Ativo"/>
+                                                <div>
+                                                    <span class="input-group-btn">
+                                                        <a href="#" id="btnAdicionar">  <button  type="button" class="btn btn-primary" id="btnAdd">Adicionar novo Ativo</button></a>
+                                                        <!--webservice para isto em: http://geo.groupkt.com/ip/187.37.108.105/json-->
+                                                    </span>
 
-                                                        <label for="txtIP">E-mail</label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control"  placeholder="Digite o e-mail"/>
+                                                </div>
 
-                                                            <label for="txtIP">Cotação atual</label>
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control"  placeholder="Cotação atual"/>
+                                            </div>
 
-                                                                <label for="txtIP">Valor máximo</label>
-                                                                <div class="input-group">
-                                                                    <input type="text" class="form-control"  placeholder="Digite o valor máximo"/>
+                                            <div class="row">
+                                                <div class="col-xs-12">&nbsp;</div>
+                                            </div>    
+                                            <div class="myCustomForm row">                                                         
+                                                <div class="col-xms-12">
+                                                    <div class="table-responsive">
+                                                        <table id="tblCadastro"  class="uk-table">
+                                                            <thead class="myCustomForm">
+                                                                <tr>
+                                                                    <th class="myCustomForm">Ativo</th>
+                                                                    <th class="myCustomForm">Cotação atual</th>
+                                                                    <th class="myCustomForm">Valor máximo</th>
+                                                                    <th class="myCustomForm">Valor mínimo</th>
+                                                                    <th class="myCustomForm">Email</th>
+                                                                    <th class="myCustomForm"> Configurações</th>
 
-                                                                    <label for="txtIP">Valor mínimo</label>
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control"  placeholder="Digite o valor mínimo"/>
-
-                                                                    </div>         
-                                                                </div>
-                                                                <br>
-                                                                <div>
-                                                                    <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn-primary">Cadastrar</button>
-                                                                        <!--webservice para isto em: http://geo.groupkt.com/ip/187.37.108.105/json-->
-                                                                    </span>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-xs-12">&nbsp;</div>
-                                                            </div>    
-                                                            <div class="myCustomForm row">                                                         
-                                                                <div class="col-xms-12">
-                                                                    <div class="table-responsive">
-                                                                        <table class="table table-striped table-condensed">
-                                                                            <thead class="myCustomForm">
-                                                                                <tr>
-                                                                                    <th class="myCustomForm">Ativo</th>
-                                                                                    <th class="myCustomForm">Cotação atual</th>
-                                                                                    <th class="myCustomForm">Valor máximo</th>
-                                                                                    <th class="myCustomForm">Valor mínimo</th>
-                                                                                    <th class="myCustomForm"> Configurações</th>
-
-                                                                                </tr>
-                                                                            </thead>
-
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td>Petr4</td>
-                                                                                    <td>11</td>
-                                                                                    <td>12</td>
-                                                                                    <td>10</td>
-                                                                                    <td>
-                                                                                        <button type="button" class="btn btn-xs btn-danger">
-                                                                                            <span class="glyphicon glyphicon-trash"></span>
-                                                                                        </button>
-                                                                                        <button type="button" class="btn btn-xs btn-primary">
-                                                                                            <span class="glyphicon glyphicon-edit"></span>
-                                                                                        </button>
-                                                                                    </td>
-                                                                                </tr>
-
-                                                                            </tbody>
-                                                                        </table>    
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            </form>
-
-                                                        </div>
-
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            </tbody>
+                                                        </table>    
                                                     </div>
                                                 </div>
                                             </div>
+                                        </form>
+
                                     </div>
 
-
-                                    </section>
-                                    <!-- /.content -->
                                 </div>
-                                <!-- /.content-wrapper -->
-
-                                <!-- Main Footer -->
-                                <footer class="main-footer">
-                                    <!-- To the right -->
-                                    <div class="pull-right hidden-xs">
-                                        1.0
-                                    </div>
-                                    <!-- Default to the left -->
-                                    <strong>Copyright &copy; 2017 <a>BSI TURMA 2019 </a>.</strong> All rights reserved.
-                                </footer>
-
-                                <!-- /.control-sidebar -->
-                                <!-- Add the sidebar's background. This div must be placed
-                                     immediately after the control sidebar -->
-                                <div class="control-sidebar-bg"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- ./wrapper -->
 
-                    <!-- REQUIRED JS SCRIPTS -->
 
-                    <!-- jQuery 2.2.3 -->
-                    <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
-                    <!-- Bootstrap 3.3.6 -->
-                    <script src="/resource/bootstrap/js/bootstrap.min.js"></script>
-                    <!-- AdminLTE App -->
-                    <script src="/resource/dist/js/app.min.js"></script>
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
 
-                    <!-- Optionally, you can add Slimscroll and FastClick plugins.
-                         Both of these plugins are recommended to enhance the
-                         user experience. Slimscroll is required when using the
-                         fixed layout. -->
-                    </body>
-                    </html>
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+                    1.0
+                </div>
+                <!-- Default to the left -->
+                <strong>Copyright &copy; 2017 <a>BSI TURMA 2019 </a>.</strong> All rights reserved.
+            </footer>
+
+            <!-- /.control-sidebar -->
+            <!-- Add the sidebar's background. This div must be placed
+                 immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+        </div>
+
+        <!-- ./wrapper -->
+
+        <!-- REQUIRED JS SCRIPTS -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <!-- Bootstrap 3.3.6 -->
+        <script src="/resource/bootstrap/js/bootstrap.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="/resource/dist/js/app.min.js"></script>
+
+        <script type="text/javascript">
+            function Adicionar() {
+                $("#tblCadastro tbody").append(
+                      "<tr>" + "<td><input type='text' placeholder='Digite o nome do Ativo'/></td>" + "<td><input type='text' placeholder='Digite o valor da Cotação'/></td>" + "<td><input type='text' placeholder='Digite o valor máximo'/></td>" + "<td><input type='text' placeholder='Digite o valor mínimo'/></td>" + "<td><input type='text' placeholder='Digite o email'/></td>" + "<td><a href='#' class='btnSalvar'><button type='button' class='btn btn-xs btn-success'><span class='glyphicon glyphicon-ok'></span> </button></a> - <a href='#' class='btnExcluir'><button type='button' class='btn btn-xs btn-danger'><span class='glyphicon glyphicon-trash'></span> </button></a></td>" + "</tr>");
+                $(".btnSalvar").bind("click", Salvar);
+                $(".btnExcluir").bind("click", Excluir);
+            }
+            ;
+
+            function Salvar() {
+                var par = $(this).parent().parent(); //tr
+                var tdAtivo = par.children("td:nth-child(1)");
+                var tdCotacao = par.children("td:nth-child(2)");
+                var tdValorMax = par.children("td:nth-child(3)");
+                var tdValorMin = par.children("td:nth-child(4)");
+                var tdEmail = par.children("td:nth-child(5)");
+                var tdConfig = par.children("td:nth-child(6)");
+
+                tdAtivo.html(tdAtivo.children("input[type=text]").val());
+                tdCotacao.html(tdCotacao.children("input[type=text]").val());
+                tdValorMax.html(tdValorMax.children("input[type=text]").val());
+                tdValorMin.html(tdValorMin.children("input[type=text]").val());
+                tdEmail.html(tdEmail.children("input[type=text]").val());
+                tdConfig.html("<a href='#' class='btnExcluir'> <button type='button' class='btn btn-xs btn-danger'><span class='glyphicon glyphicon-trash'></span> </button></a> - <a class='btnEditar' href='#'> <button type='button' class='btn btn-xs btn-primary'><span class='glyphicon glyphicon-edit'></span></button></a>");
+
+                $(".btnEditar").bind("click", Editar);
+                $(".btnExcluir").bind("click", Excluir);
+            }
+            ;
+
+            function Editar() {
+                var par = $(this).parent().parent(); //tr
+                var tdAtivo = par.children("td:nth-child(1)");
+                var tdCotacao = par.children("td:nth-child(2)");
+                var tdValorMax = par.children("td:nth-child(3)");
+                var tdValorMin = par.children("td:nth-child(4)");
+                var tdEmail = par.children("td:nth-child(5)");
+                var tdConfig = par.children("td:nth-child(6)");
+
+                tdAtivo.html("<input type='text'  class='form-control' id='ativo' name='ativo' value='" + tdAtivo.html() + "'/>");
+                tdCotacao.html("<input type='text'  class='form-control' id='cotacao' placeholder='Digite o valor da Cotação'  name='cotacao' value=' " + tdCotacao.html() + "'/>");
+                tdValorMax.html("<input type='text' class='form-control'  id='valorMax' name='valorMax' placeholder='Digite o valor máximo' value=' " + tdValorMax.html() + "'/>");
+                tdValorMin.html("<input type='text'  class='form-control' id='valorMin' name='valorMin' placeholder='Digite o valor mínimo' value=' " + tdValorMin.html() + "'/>");
+                tdEmail.html("<input type='text'  class='form-control' id='email' name='email' placeholder='Digite o email' value=' " + tdEmail.html() + "'/>");
+                tdConfig.html("<a href='#' class='btnSalvar'> <button type='button' class='btn btn-xs btn-success'><span class='glyphicon glyphicon-ok'></span> </button></a>");
+
+                $(".btnSalvar").bind("click", Salvar);
+                $(".btnEditar").bind("click", Editar);
+                $(".btnExcluir").bind("click", Excluir);
+            }
+            ;
+
+            function Excluir() {
+                var par = $(this).parent().parent(); //tr
+                par.remove();
+            }
+            ;
+
+            $(function () {
+                //Código das funções Adicionar, Salvar, Editar e Excluir
+                $(".btnEditar").bind("click", Editar);
+                $(".btnExcluir").bind("click", Excluir);
+                $("#btnAdicionar").bind("click", Adicionar);
+            });
+
+        </script>
+
+        <!-- Optionally, you can add Slimscroll and FastClick plugins.
+             Both of these plugins are recommended to enhance the
+             user experience. Slimscroll is required when using the
+             fixed layout. -->
+    </body>
+</html>
