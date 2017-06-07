@@ -23,3 +23,8 @@ function formatarData(dataFormatada) {
     dataFormatada = new Date(dataFormatada);
     return dataFormatada.getFullYear() + "-" + (dataFormatada.getMonth() + 1) + "-" + dataFormatada.getDate();
 }
+
+$(function () {
+    $(".datepicker").datepicker();
+    $('#inicio').DataTable();
+} );

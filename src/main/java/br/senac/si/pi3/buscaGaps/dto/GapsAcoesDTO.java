@@ -3,10 +3,6 @@ package br.senac.si.pi3.buscaGaps.dto;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Gustavo
- */
 public class GapsAcoesDTO {
     private String codigoAcao;
     private String nomeAcao;

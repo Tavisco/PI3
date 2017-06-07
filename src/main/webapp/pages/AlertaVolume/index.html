@@ -19,7 +19,7 @@
               apply the skin class to the body tag so the changes take effect.
         -->
         <link rel="stylesheet" href="/resource/dist/css/skins/skin-green.min.css">
-        
+
         <!-- daterange picker -->
         <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
 
@@ -128,11 +128,12 @@
 
                 <!-- Main content -->
                 <section class="content">
-                        <div class="col-xs-12">
-                            <div class="box box-success">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Variação de ações</h3>
-                                </div>
+                    <div class="col-xs-12">
+                        <div class="box box-success">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Variação de ações</h3>
+                            </div>
+                            <form id="formEnviar" class="form-horizontal">
                                 <div class="box-body">
                                     <div class="input-group">
                                         <div class="input-group-addon">   
@@ -140,12 +141,14 @@
                                         </div>
                                         <input type="text" class="form-control pull-right" id="data" name="data">
                                     </div>
+
                                 </div>
                                 <div class="box-footer">
-                                    <button type="submit" id="btnSubmeter" class="btn btn-success pull-right">ENVIAR</button>
+                                    <button type="submit" id="btnSubmeter" class="btn btn-success pull-right">enviar</button>    
                                 </div>
-                            </div>
+                            </form>
                         </div>
+                    </div>
 
                 </section>
                 <!-- /.content -->
@@ -177,17 +180,35 @@
         <script src="/resource/bootstrap/js/bootstrap.min.js"></script>
         <!-- AdminLTE App -->
         <script src="/resource/dist/js/app.min.js"></script>
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
         <script src="/plugins/daterangepicker/daterangepicker.js"></script>
 
         <script>
             $('#data').daterangepicker();
-            
-            
+
+            $("#formEnviar").submit(function (event) {
+                event.preventDefault();
+         
+                $.ajax({
+                    method: "POST",
+                    url: "/api/alertaVolume/enviar",
+                    data: $("#formEnviar").serialize()
+                })
+                 .done(function (msg) {      
+                if (msg === "true"){
+                    console.log("Dados enviados com sucesso!");
+                } else {
+                    alert("Erro ao incluir dados");
+                }
+                $('#btnSubmeter').html("enviar");  
+
+            })
+    
+   });
         </script>
 
-        
-       
+
+
     </body>
 </html>
