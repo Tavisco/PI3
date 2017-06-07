@@ -1,6 +1,7 @@
 package br.senac.si.pi3.modelagemtendencia.dto;
 
 import br.senac.si.pi3.modelagemtendencia.Enum.TendenciaEnum;
+
 import java.util.Date;
 
 public class AcoesDTO {
@@ -11,6 +12,8 @@ public class AcoesDTO {
     private Date data;
     private TendenciaEnum estadoNoPeriodo;
 
+    
+    
     public int getId() {
         return id;
     }
