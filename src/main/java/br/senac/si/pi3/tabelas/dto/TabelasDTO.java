@@ -2,7 +2,6 @@ package br.senac.si.pi3.tabelas.dto;
 
 import java.util.Date;
 
-
 public class TabelasDTO {
     private int id;
     private String codigoAcao;
