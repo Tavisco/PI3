@@ -100,11 +100,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="sidebar-menu">
                         <li class="header">FUNCIONALIDADES</li>
                         <!-- Optionally, you can add icons to the links -->
-                        <li><a href="/index.html"><i class="fa fa-home" aria-hidden="true"></i> <span>Home</span></a></li>
-                        <li><a href="/pages/AlertaVolume/index.html"><i class="fa fa-usd"></i> <span>Ativos</span></a></li>
-                        <li><a href="/pages/Bolinha/index.html"><i class="fa fa-usd"></i> <span>BOLINHA</span></a></li>
-                        <li><a href="/pages/AlertasDeVariacao/index.html"><i class="fa fa-line-chart" aria-hidden="true"></i> <span>Alerta de Variação</span></a></li>
+                        <li class="#"><a href="/index.html"><i class="fa fa-home" aria-hidden="true"></i> <span>Home</span></a></li>
+                        <li class="#"><a href="/pages/About/Index.html"><i class="fa fa-book" aria-hidden="true"></i> <span>Sobre</span></a></li>
+                        <li class="#"><a href="/pages/AlertaVolume/index.html"><i class="fa fa-usd"></i> <span>Ativos</span></a></li>
+                        <li class="#"><a href="/pages/Bolinha/index.html"><i class="fa fa-usd"></i> <span>BOLINHA</span></a></li>
+                        <li class="#"><a href="/pages/AlertasDeVariacao/index.html"><i class="fa fa-line-chart" aria-hidden="true"></i> <span>Alerta de Variação</span></a></li>
                         <li class="active"><a href="/pages/BuscaGAPS/index.html"><i class="fa fa-money" aria-hidden="true"></i><span>Busca de GAP'S</span></a></li>
+                        <li class="#"><a href="/pages/Tabelas/index.html"><i class="fa fa-table"></i> <span>Tabelas</span></a></li>
                         <li class="treeview">
                             <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span>Gráficos</span>
                                 <span class="pull-right-container">
@@ -183,34 +185,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <br/><br/>
                     <div class="col-md-12" style="background-color: white;">
                         <script id="template" type="text/template">
-                                <table id="example" style="background-color: white" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                           <th>Código</th>
-                                    <th>Nome</th>
-                                    <th>Data</th>
-                                    <th>GAP</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Código</th>
-                                        <th>Nome</th>
-                                        <th>Data</th>
-                                        <th>GAP</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        {{#.}}
-                                            <tr role="row" class="odd">
-                                                <td>{{codigoAcao}}</td>
-                                                <td>{{nomeAcao}}</td>
-                                                <td>{{datas}}</td>
-                                                <td>{{gap}}</td>
-                                            </tr>
-                                        {{/.}}
-                                    </tbody>
-                                </table>
+                            <table id="example" style="background-color: white" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>GAP</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>GAP</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            {{#.}}
+                            <tr role="row" class="odd">
+                            <td>{{codigoAcao}}</td>
+                            <td>{{nomeAcao}}</td>
+                            <td>{{datas}}</td>
+                            <td>{{gap}}</td>
+                            </tr>
+                            {{/.}}
+                            </tbody>
+                            </table>
                         </script>
                         <div class="col-md-12" id="tabela">
                             <table id="inicio" class="table table-responsive table-striped table-bordered" cellspacing="0" width="100%">
@@ -235,8 +237,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 </tbody>
                             </table>
-
                         </div>
+                    </div>
 
                 </section>
                 <!-- /.content -->
